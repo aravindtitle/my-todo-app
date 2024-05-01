@@ -1,3 +1,4 @@
+// pages/api/todos/index.js
 import connectDB from "../../../db";
 import Todo from "../../../models/Todo";
 
@@ -5,9 +6,13 @@ connectDB();
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
+    // Fetch todos
+  } else if (req.method === "POST") {
+    // Add new todo
+    const { text } = req.body;
     try {
-      const todos = await Todo.find({});
-      res.status(200).json(todos);
+      const todo = await Todo.create({ text });
+      res.status(201).json(todo);
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
     }
