@@ -32,7 +32,7 @@ const Home = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ completed: !completed }),
+      body: JSON.stringify({ completed: !completed }), // Toggle the completed status
     })
       .then((response) => response.json())
       .then((updatedTodo) => {

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const { id } = req.query;
 
   if (req.method === "PUT") {
-    const { completed } = req.body;
+    const { completed } = req.body; // Retrieve the new completion status
     try {
       const todo = await Todo.findByIdAndUpdate(
         id,
