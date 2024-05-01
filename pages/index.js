@@ -26,10 +26,26 @@ const Home = () => {
       .catch((error) => console.error("Error adding todo:", error));
   };
 
+  const handleToggleTodo = (id) => {
+    fetch(`/api/todos/${id}/toggle`, {
+      method: "PUT",
+    })
+      .then((response) => response.json())
+      .then((updatedTodo) => {
+        const updatedTodos = todos.map((todo) =>
+          todo._id === updatedTodo._id
+            ? { ...todo, completed: updatedTodo.completed }
+            : todo
+        );
+        setTodos(updatedTodos);
+      })
+      .catch((error) => console.error("Error toggling todo:", error));
+  };
+
   return (
     <div>
       <AddTodoForm onAdd={handleAddTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onToggle={handleToggleTodo} />
     </div>
   );
 };
