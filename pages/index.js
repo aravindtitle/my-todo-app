@@ -26,9 +26,13 @@ const Home = () => {
       .catch((error) => console.error("Error adding todo:", error));
   };
 
-  const handleToggleTodo = (id) => {
+  const handleToggleTodo = (id, completed) => {
     fetch(`/api/todos/${id}/toggle`, {
       method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ completed: !completed }),
     })
       .then((response) => response.json())
       .then((updatedTodo) => {

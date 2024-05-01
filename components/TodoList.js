@@ -11,7 +11,9 @@ const TodoList = ({ todos, onToggle }) => {
             key={todo._id}
             style={{ textDecoration: todo.completed ? "line-through" : "none" }}
           >
-            <span onClick={() => onToggle(todo._id)}>{todo.text}</span>
+            <span onClick={() => onToggle(todo._id, todo.completed)}>
+              {todo.text}
+            </span>
           </li>
         ))}
       </ul>
