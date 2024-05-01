@@ -48,6 +48,7 @@ const Home = () => {
 
   return (
     <div>
+      <p>TodlList</p>
       <AddTodoForm onAdd={handleAddTodo} />
       <TodoList todos={todos} onToggle={handleToggleTodo} />
     </div>
